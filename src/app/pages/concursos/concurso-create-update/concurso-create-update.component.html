@@ -1,0 +1,62 @@
+<div mat-dialog-title>Customer</div>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+    <mat-dialog-content>
+
+        <div class="person">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex>
+                    <mat-label>Año</mat-label>
+                    <mat-select formControlName="anio" name="anio">
+                        <mat-option *ngFor="let anio of [2021, 2021, 2023, 2024]" [value]="anio">
+                            {{anio}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                    <mat-label>Periodo</mat-label>
+                    <mat-select formControlName="periodo" name="periodo">
+                        <mat-option *ngFor="let periodo of ['A', 'B']" [value]="periodo">
+                            {{periodo}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex>
+                <mat-label>Fecha de inicio</mat-label>
+                <input matInput formControlName="startDate" [matDatepicker]="dp1" disabled>
+                <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>Fecha fin</mat-label>
+                <input matInput formControlName="endDate" [matDatepicker]="dp2" disabled>
+                <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+                <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+            <mat-form-field fxFlex>
+                <mat-label>Fecha de aprobación</mat-label>
+                <input matInput formControlName="approvalDate" [matDatepicker]="dp3" disabled>
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>Fecha de Clase Magistral</mat-label>
+                <input matInput formControlName="magistralClassDate" [matDatepicker]="dp4" disabled>
+                <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+                <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button *ngIf="isCreateMode()" mat-button [disabled]="!form.valid">CREAR CONCURSO</button>
+        <button *ngIf="isUpdateMode()" mat-button [disabled]="!form.valid">ACTUALIZAR CONCURSO</button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,15 @@
+<fury-page-layout mode="card">
+    <fury-page-layout-header>
+        <fury-breadcrumbs [@fadeInRight] [crumbs]="['Concurso Docente']" current="Convocatoria">
+        </fury-breadcrumbs>
+    </fury-page-layout-header>
+
+    <fury-page-layout-content [@fadeInUp]>
+        <mat-grid-list fxFlex cols="4" rowHeight="30rem" gutterSize="1rem">
+            <mat-grid-tile *ngFor="let plaza of plazasConcurso">
+                <card-plaza [plaza]="plaza" [concurso]="concurso"
+                    [departamentoName]="getDepartamentoName(plaza.idDepartamento)"></card-plaza>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </fury-page-layout-content>
+</fury-page-layout>

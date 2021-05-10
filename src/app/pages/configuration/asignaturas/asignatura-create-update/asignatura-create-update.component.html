@@ -1,0 +1,35 @@
+<div mat-dialog-title>Asignatura</div>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+    <mat-dialog-content>
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" class="small-modal">
+            <mat-form-field fxFlex>
+                <mat-label>Departamento</mat-label>
+                <input type="text" formControlName="idDepartamento" matInput [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+
+        <div class="person small-modal">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+                <mat-form-field fxFlex>
+                    <mat-label>Nombre</mat-label>
+                    <input type="text" formControlName="nameAsignatura" matInput>
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                    <mat-label>Descripción</mat-label>
+                    <input type="text" formControlName="description" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button *ngIf="isCreateMode()" mat-button [disabled]="!form.valid">CREAR ASIGNATURA</button>
+        <button *ngIf="isUpdateMode()" mat-button [disabled]="!form.valid">ACTUALIZAR ASIGNATURA</button>
+    </mat-dialog-actions>
+</form>

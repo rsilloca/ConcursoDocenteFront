@@ -1,0 +1,100 @@
+<div mat-dialog-title>Customer</div>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+    <mat-dialog-content>
+
+        <div class="person small-modal">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="1rem" fxLayoutGap="0">
+                <mat-form-field fxFlex="calc(33% - 1rem)">
+                    <mat-label>Concurso</mat-label>
+                    <mat-select formControlName="idConcurso" name="idConcurso">
+                        <mat-option *ngFor="let concurso of concursos" [value]="concurso.id">
+                            {{concurso.anio + ' - ' + concurso.periodo}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="calc(67% - 1rem)">
+                    <mat-label>Departamento</mat-label>
+                    <input type="text" formControlName="idDepartamento" matInput [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="1rem" fxLayoutGap="0" class="small-modal">
+            <mat-form-field fxFlex="calc(33% - 2rem)">
+                <mat-label>Tipo Plaza</mat-label>
+                <mat-select formControlName="idTipoPlaza" name="idTipoPlaza">
+                    <mat-option *ngFor="let tipo of tiposPlaza" [value]="tipo.id">
+                        {{tipo.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(33% - 2rem)">
+                <mat-label>Regimen</mat-label>
+                <mat-select formControlName="idRegimen" name="idRegimen">
+                    <mat-option *ngFor="let reg of regimenes" [value]="reg.id">
+                        {{reg.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(34% - 2rem)">
+                <mat-label>Cantidad</mat-label>
+                <input type="text" formControlName="quantity" matInput>
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-sm="row" class="small-modal" fxLayoutGap="1rem">
+            <div fxFlex="calc(50% - 1rem)" fxLayout="column">
+                <h4>Agrega cursos a la plaza</h4>
+                <div fxLayout="row" fxLayoutGap="1rem">
+                    <mat-form-field fxFlex="calc(100% - 4rem)">
+                        <mat-label>Curso</mat-label>
+                        <input type="text" formControlName="idAsignatura" matInput [matAutocomplete]="autoAsignaturas">
+                        <mat-autocomplete autoActiveFirstOption #autoAsignaturas="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptionsAsignaturas | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <button fxFlex="3rem" mat-mini-fab type="button" color="primary" class="btn-mini-fab"
+                        (click)="addAsignatura()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div fxLayout="row" *ngFor="let asignatura of asignaturasElegidas; let index = index">
+                    <h6>{{index + 1}}. {{asignatura.nameAsignatura}} </h6>
+                </div>
+            </div>
+            <div fxFlex="calc(50% - 1rem)" fxLayout="column">
+                <h4>Agrega requisitos a la plaza</h4>
+                <div fxLayout="row">
+                    <mat-form-field fxFlex="calc(100% - 4rem)" fxLayoutGap="1rem">
+                        <mat-label>Requisito</mat-label>
+                        <input type="text" formControlName="idRequisito" matInput [matAutocomplete]="autoRequisitos">
+                        <mat-autocomplete autoActiveFirstOption #autoRequisitos="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptionsRequisitos | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <button fxFlex="3rem" mat-mini-fab type="button" color="primary" class="btn-mini-fab"
+                        (click)="addRequisito()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div fxLayout="row" *ngFor="let requisito of requisitosElegidos; let index = index">
+                    <h6>{{index + 1}}. {{requisito.name}} </h6>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button *ngIf="isCreateMode()" mat-button [disabled]="!form.valid">CREAR PLAZA</button>
+        <button *ngIf="isUpdateMode()" mat-button [disabled]="!form.valid">ACTUALIZAR PLAZA</button>
+    </mat-dialog-actions>
+</form>

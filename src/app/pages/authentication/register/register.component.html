@@ -1,0 +1,70 @@
+<div class="background-pattern page" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1rem">
+  <div [@fadeInUp] class="card-info border-radius mat-elevation-z8">
+    <div class="header-card-info background-primary" fxLayout="column" fxLayoutAlign="center center">
+      <h4 class="title-main">CODIGO PLAZA: {{plaza.id}}</h4>
+    </div>
+    <div class="padding" fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+      <div fxFlex="auto" fxLayout="column">
+        <h4>TIPO PLAZA: {{getTipoPlazaName(plaza.idTipoPlaza)}}</h4>
+        <h4>RÉGIMEN: {{getRegimenName(plaza.idRegimen)}}</h4>
+        <h4>DEPARTAMENTO: {{getDepartamentoName(plaza.idDepartamento)}}</h4>
+        <h4>CONCURSO: {{getConcursoName(plaza.idConcurso)}}</h4>
+        <h4>CANTIDAD: {{plaza.quantity}}</h4>
+        <div fxLayout="row" fxLayoutGap="1rem">
+          <div fxFlex="calc(50% - 1rem)" fxLayout="column">
+            <h4>CURSOS:</h4>
+            <h6 *ngFor="let curso of plaza.courses; let index = index">
+              {{index + 1}}. {{curso.nameAsignatura}}
+            </h6>
+          </div>
+          <div fxFlex="calc(50% - 1rem)" fxLayout="column">
+            <h4>REQUERIMIENTOS:</h4>
+            <h6 *ngFor="let req of plaza.requirements; let index = index">
+              {{index + 1}}. {{req.name}}
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div [@fadeInUp] class="card border-radius mat-elevation-z8">
+    <div class="header padding background-primary" fxLayout="column" fxLayoutAlign="center center">
+      <div class="logo fill-primary-contrast">
+        <img src="assets/svg/escudo-unsa.svg" alt="escudo-unsa" class="escudo-unsa-register">
+      </div>
+    </div>
+    <div class="padding" fxLayout="column" fxLayoutGap="16px" [formGroup]="form">
+      <div fxFlex="auto" fxLayout="column">
+        <mat-form-field fxFlex="grow">
+          <mat-label>DNI</mat-label>
+          <input matInput required formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="grow">
+          <mat-label>Nombres</mat-label>
+          <input matInput required formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="grow">
+          <mat-label>Apellidos</mat-label>
+          <input matInput [type]="inputType" formControlName="password" required>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0.5rem">
+        <mat-icon>upload_file</mat-icon>
+        <a href="#">
+          Cargar expediente curricular
+        </a>
+      </div>
+      <button type="button" color="primary" mat-raised-button [routerLink]="['/convocatoria/2']">
+        POSTULAR AHORA
+      </button>
+      <p class="secondary-text text-center">
+        ¿Tienes una cuenta?<br />
+        <a [routerLink]="['/login']">Inicia sesión aquí</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<mat-card class="mat-elevation-z4 card-plaza">
+    <mat-card-header>
+        <!-- <img mat-card-avatar src="assets/img/avatars/3.jpg"> -->
+        <mat-card-subtitle class="only-two-lines">
+            {{departamentoName ? departamentoName : 'Departamento'}}
+        </mat-card-subtitle>
+        <mat-card-title>CÓDIGO PLAZA: {{plaza ? plaza.id : 0}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="assets/img/code-bg.jpg">
+    <mat-card-content>
+        <p *ngIf="concurso" class="only-one-line">
+            Desde el {{concurso.startDate | date:'dd MMM yyyy'}} al {{concurso.endDate | date:'dd MMM yyyy'}}
+        </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+        <div fxLayout="row">
+            <!-- <button mat-icon-button>
+                <mat-icon>share</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>star</mat-icon>
+            </button>
+            <span fxFlex></span> -->
+            <button *ngIf="rankingMode" mat-button [routerLink]="['/ranking', plaza.id]" fxFlex>
+                Ver ranking
+            </button>
+            <!-- <ng-container #detalles> -->
+                <button *ngIf="!rankingMode" mat-button [routerLink]="['/register', plaza.id]" fxFlex>
+                    Ver detalles
+                </button>
+            <!-- </ng-container> -->
+
+            <!-- <button mat-button>
+                Save as
+            </button> -->
+        </div>
+    </mat-card-actions>
+</mat-card>
