@@ -24,7 +24,7 @@ import { TIPOS_PLAZA_TABLE_DEMO_DATA } from './tipos-plaza-table.demo';
 })
 export class PlazaCreateUpdateComponent implements OnInit {
 
-  static id = 100;
+  static id = 5;
 
   form: FormGroup;
   mode: 'create' | 'update' = 'create';

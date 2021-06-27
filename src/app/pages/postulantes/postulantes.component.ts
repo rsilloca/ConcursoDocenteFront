@@ -37,8 +37,11 @@ export class PostulantesComponent implements OnInit, AfterViewInit, OnDestroy {
     { name: 'Código Plaza', property: 'idPlaza', visible: true, isModelProperty: true },
     { name: 'N° Documento', property: 'document', visible: true, isModelProperty: true },
     { name: 'N° Celular', property: 'phoneNumber', visible: true, isModelProperty: true },
+    { name: 'Nota 1', property: 'n1', visible: false, isModelProperty: true },
+    { name: 'Nota 2', property: 'n2', visible: false, isModelProperty: true },
+    { name: 'Email', property: 'mail', visible: false, isModelProperty: true },
     { name: 'Estado', property: 'state', visible: true, isModelProperty: true },
-    { name: 'Actions', property: 'actions', visible: true },
+    { name: 'Acciones', property: 'actions', visible: true },
   ] as ListColumn[];
   pageSize = 10;
   dataSource: MatTableDataSource<Postulante> | null;

@@ -41,7 +41,7 @@ export class DepartamentosComponent implements OnInit, AfterViewInit, OnDestroy 
     { name: 'Descripción', property: 'description', visible: true, isModelProperty: true },
     { name: 'Facultad', property: 'idFacultad', visible: true, isModelProperty: true },
     { name: 'Estado', property: 'state', visible: true, isModelProperty: true },
-    { name: 'Actions', property: 'actions', visible: true },
+    { name: 'Acciones', property: 'actions', visible: true },
   ] as ListColumn[];
   pageSize = 10;
   dataSource: MatTableDataSource<Departamento> | null;
