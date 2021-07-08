@@ -18,9 +18,9 @@ export class LoginComponent implements OnInit {
   visible = false;
 
   constructor(private router: Router,
-              private fb: FormBuilder,
-              private cd: ChangeDetectorRef,
-              private snackbar: MatSnackBar
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef,
+    private snackbar: MatSnackBar
   ) {
   }
 
@@ -32,7 +32,11 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-    this.router.navigate(['/']);
+    if (this.form.valid) {
+      let dataUser = JSON.stringify(this.form.value);
+      localStorage.setItem('logged', dataUser);
+      this.router.navigate(['/']);
+    }
     // this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
     //   duration: 10000
     // });

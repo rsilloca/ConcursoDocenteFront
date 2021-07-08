@@ -68,7 +68,7 @@
 
         <h4 class="title-normal">Otros Rankings</h4>
 
-        <mat-grid-list fxFlex cols="3" rowHeight="30rem" gutterSize="1rem">
+        <mat-grid-list fxFlex cols="1" rowHeight="30rem" gutterSize="1rem">
             <mat-grid-tile *ngFor="let plaza of otherRankings">
                 <card-plaza class="all-space" [plaza]="plaza" [concurso]="concurso"
                     [departamentoName]="getDepartamentoName(plaza.idDepartamento)" [rankingMode]="true"></card-plaza>

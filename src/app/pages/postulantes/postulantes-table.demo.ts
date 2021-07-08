@@ -10,7 +10,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'short.lowe@yourcompany.ca',
     'idPlaza': 1,
     'n1': 70,
-    'n2': 65
+    'n2': 0
   },
   {
     'id': 2,
@@ -23,7 +23,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'antoinette.carson@yourcompany.net',
     'idPlaza': 1,
     'n1': 73,
-    'n2': 60
+    'n2': 0
   },
   {
     'id': 3,
@@ -36,7 +36,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'lynnette.adkins@yourcompany.info',
     'idPlaza': 2,
     'n1': 70,
-    'n2': 50
+    'n2': 0
   },
   {
     'id': 4,
@@ -49,7 +49,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'patrica.good@yourcompany.me',
     'idPlaza': 2,
     'n1': 60,
-    'n2': 80
+    'n2': 0
   },
   {
     'id': 5,
@@ -62,7 +62,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'kane.koch@yourcompany.org',
     'idPlaza': 3,
     'n1': 68,
-    'n2': 65
+    'n2': 0
   },
   {
     'id': 6,
@@ -75,7 +75,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'donovan.gonzalez@yourcompany.tv',
     'idPlaza': 3,
     'n1': 59,
-    'n2': 80
+    'n2': 0
   },
   {
     'id': 7,
@@ -88,7 +88,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'sabrina.logan@yourcompany.co.uk',
     'idPlaza': 3,
     'n1': 83,
-    'n2': 70
+    'n2': 0
   },
   {
     'id': 8,
@@ -101,7 +101,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'estela.jordan@yourcompany.name',
     'idPlaza': 3,
     'n1': 67,
-    'n2': 50
+    'n2': 0
   },
   {
     'id': 9,
@@ -114,7 +114,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'rosanna.cross@yourcompany.biz',
     'idPlaza': 4,
     'n1': 70,
-    'n2': 45
+    'n2': 0
   },
   {
     'id': 10,
@@ -127,7 +127,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'Mary.jane@yourcompany.biz',
     'idPlaza': 4,
     'n1': 80,
-    'n2': 64
+    'n2': 0
   },
   {
     'id': 11,
@@ -140,7 +140,7 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'lane.delaney@yourcompany.ca',
     'idPlaza': 4,
     'n1': 72,
-    'n2': 69
+    'n2': 0
   },
   {
     'id': 12,
@@ -153,6 +153,6 @@ export const POSTULANTES_TABLE_DEMO_DATA = [
     'mail': 'cooper.odom@yourcompany.info',
     'idPlaza': 1,
     'n1': 73,
-    'n2': 72
+    'n2': 0
   }
 ];

@@ -149,6 +149,11 @@ export class RankingComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getRankingUsers() {
+    let localCalificaciones = localStorage.getItem('qualifications');
+    let calificaciones: any[];
+    if (localCalificaciones) {
+      calificaciones = JSON.parse(localCalificaciones);
+    }
     this.getData().subscribe(customers => {
       this.subject$.next(customers);
     });
@@ -158,8 +163,20 @@ export class RankingComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.data$.pipe(
       filter(data => !!data)
-    ).subscribe((customers: Postulante[]) => {
-      customers.sort((a, b) => {
+    ).subscribe((postulantes: Postulante[]) => {
+      postulantes.forEach(p => {
+        let cantNotas: number = 0;
+        let sumaNotas: number = 0;
+        calificaciones.forEach(c => {
+          if (c[0] == p.id) {
+            cantNotas++;
+            sumaNotas += +c[2];
+          }
+        });
+        p.n2 = sumaNotas / cantNotas;
+      });
+
+      postulantes.sort((a, b) => {
         let puntajeA = (a.n1 + a.n2) / 2;
         let puntajeB = (b.n1 + b.n2) / 2;
         if (puntajeA > puntajeB) {
@@ -170,10 +187,13 @@ export class RankingComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         return 0;
       });
-      customers.forEach(c => {
+
+      postulantes.forEach(c => {
         if (c.idPlaza == this.idPlaza) {
-          this.customers.push(c);
-          this.dataSource.data.push(c);
+          // if (c.n2 != 0) {
+            this.customers.push(c);
+            this.dataSource.data.push(c);
+          // }
         }
       });
     });

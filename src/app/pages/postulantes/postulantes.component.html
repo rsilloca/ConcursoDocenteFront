@@ -55,7 +55,7 @@
                         </button>
 
                         <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">
-                            <button mat-menu-item>
+                            <button mat-menu-item (click)="viewModalQualify(row)">
                                 <span>Calificar</span>
                             </button>
                         </mat-menu>

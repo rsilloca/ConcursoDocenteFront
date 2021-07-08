@@ -11,6 +11,8 @@ import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.an
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
 import { Postulante } from './postulante-create-update/postulante.model';
 import { PostulanteCreateUpdateComponent } from './postulante-create-update/postulante-create-update.component';
+import { PostulanteQualifyComponent } from './postulante-qualify/postulante-qualify.component';
+import { PostulanteAlertComponent } from './postulante-alert/postulante-alert.component';
 
 @Component({
   selector: 'fury-postulantes',
@@ -37,7 +39,7 @@ export class PostulantesComponent implements OnInit, AfterViewInit, OnDestroy {
     { name: 'Código Plaza', property: 'idPlaza', visible: true, isModelProperty: true },
     { name: 'N° Documento', property: 'document', visible: true, isModelProperty: true },
     { name: 'N° Celular', property: 'phoneNumber', visible: true, isModelProperty: true },
-    { name: 'Nota 1', property: 'n1', visible: false, isModelProperty: true },
+    { name: 'Nota 1', property: 'n1', visible: true, isModelProperty: true },
     { name: 'Nota 2', property: 'n2', visible: false, isModelProperty: true },
     { name: 'Email', property: 'mail', visible: false, isModelProperty: true },
     { name: 'Estado', property: 'state', visible: true, isModelProperty: true },
@@ -139,6 +141,41 @@ export class PostulantesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
   }
+
+  viewModalQualify(postulante: Postulante) {
+    let currentUser: string = '';
+    let localDataUser = localStorage.getItem('logged');
+    if (localDataUser) {
+      let dataUser = JSON.parse(localDataUser);
+      currentUser = dataUser.email;
+      let localCalificaciones = localStorage.getItem('qualifications');
+      if (localCalificaciones) {
+        let calificaciones: any[] = JSON.parse(localCalificaciones);
+        let existingGrade = false;
+        calificaciones.forEach(c => {
+          if (c[0] == postulante.id && c[1] == currentUser) {
+            this.dialog.open(PostulanteAlertComponent);
+            existingGrade = true;
+            return;
+          }
+        });
+        if (!existingGrade) {
+          this.calificar(postulante);
+        }
+      } else {
+        this.calificar(postulante);
+      }
+    } else {
+      this.calificar(postulante);
+    }
+  }
+
+  calificar(postulante: Postulante) {
+    const dialog = this.dialog.open(PostulanteQualifyComponent, {
+      data: postulante
+    });
+  }
+
 }
 
 
